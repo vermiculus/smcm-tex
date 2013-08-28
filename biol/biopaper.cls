@@ -10,11 +10,17 @@
 
 
 % We speak American, dammit!
-\usepackage[american]{babel}
+\PassOptionsToPackage{american}{babel}
+\RequirePackage{babel}
+%\usepackage[american]{babel}
 
 % And our papers for Biology are in the APA style (I believe)
-\usepackage[style=apa,autocite=inline]{biblatex}
+\PassOptionsToPackage{style=apa,autocite=inline}{biblatex}
+\RequirePackage{biblatex}
+%\usepackage[style=apa,autocite=inline]{biblatex}
 % And we need to make sure we title our shtuff appropriately (e.g. Works Cited -> References)
 \DeclareLanguageMapping{american}{american-apa}
 
-\usepackage[hidelinks]{hyperref}
+\PassOptionsToPackage{hidelinks}{hyperref}
+\RequirePackage{hyperref}
+%\usepackage[hidelinks]{hyperref}
