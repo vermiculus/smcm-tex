@@ -1,0 +1,8 @@
+-*- mode: org -*-
+
+Various examples of common functions:
+- references with biblatex
+- plots with pgf
+  - from measurement data
+  - legends (wait for it---dary)
+- more?
