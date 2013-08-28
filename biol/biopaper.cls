@@ -8,6 +8,8 @@
 % Load our base class.  (All of the hard work: done!)
 \LoadClass{apa6e}
 
+\RequirePackage{xparse}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Bibliography Management %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,6 +33,24 @@
 % They really just look better.
 \RequirePackage{booktabs}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Chemical Formulae %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\PassOptionsToPackage{version=3}{mhchem}
+\RequirePackage{mhchem}
+
+\NewDocumentCommand \reaction { s o m } {
+  \IfBooleanTF #1 {
+    \begin{equation*}
+      \ce{#3}
+    \end{equation*}
+ }{ \begin{equation}
+      \IfValueTF{#2}{\label{#2}}{}
+      \ce{#3}
+    \end{equation}
+  }
+}
 
 % We want hyper-references (and \autoref!!), so bring in the hyperref
 % package.
