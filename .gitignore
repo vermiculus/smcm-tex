@@ -31,3 +31,7 @@
 *.xdy
 *.tdo
 *.el
+*.bcf
+*.pdf
+*.run.xml
+*.ttt
