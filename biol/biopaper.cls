@@ -1,26 +1,28 @@
 \ProvidesClass{biopaper}[2013/08/27 SMCM Biology paper; because I've no idea]
 
 % Any options I don't specificaly define, just pass along to the
-% `article` class.
+% `apa6e` class (APA Sixth Edition).
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{apa6e}}
 \ProcessOptions\relax
 
-% Load our base class.
+% Load our base class.  (All of the hard work: done!)
 \LoadClass{apa6e}
 
 
-% We speak American, dammit!
+% We speak American!  Seriously, this is needed by biblatex.
 \PassOptionsToPackage{american}{babel}
 \RequirePackage{babel}
-%\usepackage[american]{babel}
+
 
 % And our papers for Biology are in the APA style (I believe)
 \PassOptionsToPackage{style=apa,autocite=inline}{biblatex}
 \RequirePackage{biblatex}
-%\usepackage[style=apa,autocite=inline]{biblatex}
-% And we need to make sure we title our shtuff appropriately (e.g. Works Cited -> References)
+
+% And we need to make sure we title our shtuff appropriately
+% (e.g. Works Cited -> References)
 \DeclareLanguageMapping{american}{american-apa}
 
+% We want hyper-references (and \autoref!!), so bring in the hyperref
+% package.
 \PassOptionsToPackage{hidelinks}{hyperref}
 \RequirePackage{hyperref}
-%\usepackage[hidelinks]{hyperref}
