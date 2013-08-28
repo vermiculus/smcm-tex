@@ -8,11 +8,13 @@
 % Load our base class.  (All of the hard work: done!)
 \LoadClass{apa6e}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bibliography Management %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % We speak American!  Seriously, this is needed by biblatex.
 \PassOptionsToPackage{american}{babel}
 \RequirePackage{babel}
-
 
 % And our papers for Biology are in the APA style (I believe)
 \PassOptionsToPackage{style=apa,autocite=inline}{biblatex}
@@ -21,6 +23,14 @@
 % And we need to make sure we title our shtuff appropriately
 % (e.g. Works Cited -> References)
 \DeclareLanguageMapping{american}{american-apa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% They really just look better.
+\RequirePackage{booktabs}
+
 
 % We want hyper-references (and \autoref!!), so bring in the hyperref
 % package.
