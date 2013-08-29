@@ -1,0 +1,34 @@
+\usepackage{expl3,xparse}
+
+\ExplSyntaxOn
+
+\NewDocumentCommand \ProgramName { m } {
+  \textsl{#1}
+}
+
+\NewDocumentCommand \MicrosoftWord { } {
+  Microsoft~\ProgramName{Word}
+}
+
+\NewDocumentCommand \MyEmail { } {
+  \href{mailto:seallred@smcm.edu}{\texttt{seallred@smcm.edu}}
+}
+
+\NewDocumentCommand \wysiwyg { } {
+  \textit{what-you-see-is-what-you-get}
+}
+
+\NewDocumentCommand \WYSIWYG { } {
+  \textit{What-you-see-is-what-you-get}
+}
+
+\NewDocumentCommand \UseCanned { m } {
+  \input{../canned/#1}
+}
+
+\ExplSyntaxOff
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: nil
+%%% End: 
