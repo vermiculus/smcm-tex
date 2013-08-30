@@ -52,6 +52,14 @@
   }
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Typographic Enhancements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{microtype}
+
+
+
 % We want hyper-references (and \autoref!!), so bring in the hyperref
 % package.
 \PassOptionsToPackage{hidelinks}{hyperref}
