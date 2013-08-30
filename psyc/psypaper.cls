@@ -58,7 +58,7 @@
 
 \RequirePackage{microtype}
 
-
+\RequirePackage{authblk}
 
 % We want hyper-references (and \autoref!!), so bring in the hyperref
 % package.
