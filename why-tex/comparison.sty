@@ -1,0 +1,29 @@
+\RequirePackage{expl3,xparse}
+
+%\ExplSyntaxOn
+
+\NewDocumentCommand \TypesetCompare { m m+ }
+ {
+  \begin{minipage}{.45\linewidth}
+    \centering
+
+    {#1}\vspace{.5ex}
+
+    #2
+  \end{minipage}
+ }
+
+\NewDocumentCommand \Compare { m m+ m m+ }
+ {
+  \TypesetCompare { #1 } { #2 }
+  \hfil
+  \TypesetCompare { #3 } { #4 }
+ }
+
+%\ExplSyntaxOff
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-master: "typography.tex" 
+%%% End: 

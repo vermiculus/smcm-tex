@@ -1,6 +1,17 @@
 \documentclass{article}
+\usepackage{comparison}
 
 \input{../canned/definitions}
+\usepackage{hyperref}
+
+\newcommand{\twcomp}[2]{%
+  \vspace{2ex}
+  \par\noindent
+  \Compare{\TeX}{#1}
+          {\MicrosoftWord}{#2}
+  \vspace{2ex}
+  \par\noindent
+}
 
 \title{The Beauty of \TeX}
 \author{Sean Allred}
@@ -8,11 +19,8 @@
 \usepackage{mwe}
 \begin{document}
 \maketitle
-\tableofcontents
 
-\section{Introduction}
-\label{sec:introduction}
-
+\begin{abstract}
 As opposed to \MicrosoftWord,
   \TeX\ is run on an input file and
   doesn't need to produce the final copy
@@ -21,15 +29,56 @@ This means that \TeX\ can spend
   the necessary time needed
   to make your document
   look absolutely \emph{gorgeous},
-  not to mention \emph{readable}.
+  not to mention exceptionally readable.
+(After all, \TeX\ was written to typeset the author's own books;
+ his publisher's work was allegedly not up to his standards.)
+This short article hopes
+  to expose some of the finer details
+  of \TeX's workmanship.
+\end{abstract}
+\vfil
+\tableofcontents
+\newpage
 
 \section{Kerning}
 \label{sec:kerning}
 
-\TeX\ 
+\NewTerm{Kerning} is that space which separates the letters of a word.
+It isn't particularly a property of the text that many people explicitly \emph{notice},
+  but it is one that can make a word look \emph{bad} or \emph{good}.
+Of course, those who know about kerning are \emph{cursed},\footnote{%
+  \url{http://www.xkcd.com/1015} CC--BY--NC Randall Munroe.}
+  but it is good to be able to spot the work of a professional,
+  and kerning is one example of a professional concern.
+
+\begin{center}
+  \includegraphics[width=.5\linewidth]{xkcd-kerning}
+\end{center}
+
+\noindent
+There are certain letters in the Latin alphabet that
+  require special spacing when used together.
+Most letters are mostly box-shaped (`h', `s', \dots),
+  but there are several that have space
+  throughout most of the glyph (`Y', `T', `L', \dots)
+  or can otherwise look awkward when combined recklessly.
+Thus, most typesetters in the days of hand-printing
+  made special stamps for these combinations
+  that had spacing that looked right.
+
+Today, computers---not typesetters---control most of our document needs.
+Computers do not follow these practices by default,
+  and products like \MicrosoftWord\ simply do not have the capability.
+Sometimes, this is barely noticeable (but still ugly to the trained eye):
+\twcomp{Table}{T{}able}
+Other times, the blunder is obvious and simply obtrusive:
+\twcomp{AVAST}{A{}V{}AST}
+
 
 \section{Ligatures}
 \label{sec:ligatures}
+
+\twcomp{efficient firefly}{ef{}f{}icient f{}iref{}ly}
 
 \section{Small Caps}
 \label{sec:small-caps}
@@ -39,9 +88,6 @@ This means that \TeX\ can spend
 
 
 
-efficient firefly \\
-ef{}f{}icient f{}iref{}ly\\
-AVAST A{}VAST
 
 \lipsum
 \includegraphics[width=\linewidth]{example-image-a}
