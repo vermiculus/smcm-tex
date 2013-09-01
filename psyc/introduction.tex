@@ -1,0 +1,132 @@
+\documentclass{psypaper}
+
+% These are some system-wide definitions I'm making for these pieces
+% of documentation.  This is evidence of another great strength of
+% LaTeX---consistency.  I make one change in this file and my changes
+% are reflected across each one of my documents.
+\input{../canned/definitions}
+
+\title{A Conceptual and Utilitarian Introduction to \LaTeX}
+\shorttitle{Introduction to \LaTeX}
+\abstract{%
+  \MicrosoftWord\ is a great tool for making a quick note or flyer,
+    but it is not suited for academic or otherwise consistently-formed documents.
+  While \MicrosoftWord\ does support `styles',
+    it does not enforce (or even vaguely encourage) their use.
+  In this short introduction, I introduce to you
+    a new system for creating your papers---%
+    a true tool to make your life easier (not to mention cheaper)---%
+    called \LaTeX.%
+}
+
+\author{Sean Allred}
+\authornote{If you have any questions or corrections,
+  please open an issue on the GitHub repository
+  or ask a nerd-friend to help you do so.}
+
+\date{August 28, 2013}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{What Is \LaTeX?}
+First, some cold facts about \LaTeX:
+\UseCanned{facts}
+\UseCanned{qanda}
+
+\LaTeX\ is not a \wysiwyg---it is not just another program you can use to write your papers.
+While \LaTeX\ is often used by over-zealous nerds as a free alternative to \MicrosoftWord,
+  it is more useful than that.
+While most other programs you have seen for writing your documents
+  are primarily concerned with how the finished product looks on the page (\wysiwyg),
+  \LaTeX\ is \emph{only} concerned with the \emph{structure} of your document.
+Who is the author?
+What is its title?
+Where are the sections?
+\emph{These} are the questions you answer for \LaTeX;
+  the rest it takes care of by itself.
+You need not concern yourself with how it is presented on the page;
+  the idea of \LaTeX\ is that \emph{it already knows how you want it laid out}.
+
+Of course, \LaTeX\ is just a computer program.
+  \emph{Someone} has to tell it what to do.
+This is where these files here come into play;
+  the files in this collection tell \LaTeX\ what to do
+  with your structured document.
+At the time of writing, these files are very small extensions
+  to the already widely-available collection of templates\footnote{We call them `document classes'.}
+  available on the web.
+As an example, if this paper looks like it has
+  a familiar---while typographically dubious---format to you,
+  there is a good reason: the majority of the templates in this collection
+  are based upon a public template specifically designed
+  to be compliant with the sixth edition of the APA Style Guide.
+Since all APA-styled papers are supposed to have the same structure and layout,
+  \LaTeX\ is \emph{the} tool for the job.
+I need not know a \emph{single thing} about the APA style
+  to write a document with perfect compliance.
+
+\section{Structured Documents}
+By now you have heard me use the term `structured document' quite a bit.
+What exactly do I mean by this?
+In \MicrosoftWord, you generally lay out all of the elements of your document \emph{by hand}.
+There is no convenient way to embed logical information---%
+  things such as `this is the author' and the like---%
+  into your paper while you're writing it.
+Sure, recent versions of \MicrosoftWord\ offer the \emph{option} of using styles,
+  but doing so is inconvenient and
+  too drastically disturbs the flow of writing. % TODO: awkward wording
+
+With \LaTeX, it is not only \emph{easy} to write structured documents,
+  but it is difficult \emph{not} to do so.
+This is a great advantage of \LaTeX.
+You can write the content once,
+  complete with what everything \emph{means},
+  and a program can decide how it \emph{looks}
+  without you having to interfere.\footnote{%
+    Of course, nerds-in-the-know can and do customize \LaTeX\ to fit their needs;
+    for example, somebody else wrote the APA document class that I'm using right now---%
+    I only need to know what everything \emph{means},
+    not how to format it on the page.}
+
+\section{Made for Academia}
+When the creator of \TeX\ started the project in 1976,
+  he was writing \TeX\ for his own use in his own master work.
+It was designed with the ideals of academic writing in mind
+  adorned with the finest in typographic taste.\footnote{%
+    Take a look at the `f' and `i';
+    this is called a \textit{ligature} and eases strain on the eye when reading.
+    Compare the look of `ef{}f{}icient f{}iref{}ly' with `efficient firefly'.
+    (Honestly, this looks even better with a proper font that ligates \texttt{ffi},
+    but I suppose Times~New~Roman doesn't define it.)}
+It comes complete with a reference management system that \emph{just works}---%
+  one that draws its information from the pure bibliographic data
+  or from custom labels that you place throughout your document---%
+  as an integrated part of your document.
+Did you just realize that you need APA~5 citations instead of APA~6 ones?
+The entire style can be changed from a single declaration
+  (changing from MLA\slash APA\slash Chicago\slash\dots).
+It's just plain easy.
+
+\section{Freedom and Security}
+With all of the advantages of using \LaTeX\ for your documents,
+  one shines a light on the rest: % Oh, the drama.
+  \LaTeX\ is \emph{completely} free.
+Since \LaTeX\ uses plain text files,
+  there exists no virus threat.
+You can download any \LaTeX\ template you wish and
+  never worry about whether this document
+  could contain a hidden `macro virus'
+  or other malicious content.
+Everything that makes your document
+  is in plain sight.
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+%  LocalWords:  qanda nerds APA TODO
