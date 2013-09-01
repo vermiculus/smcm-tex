@@ -3,22 +3,6 @@
 \usepackage{setup}
 
 \begin{document}
-\begin{figure}
-  \centering
-  \verbatiminput{fish-8.9mgL.dat} % Show our data file
-  \caption{The data in \texttt{fish-8.9mgL.dat},
-    an external file}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \verbatiminput{fish-3.9mgL.dat} % Show our data file
-  \caption{The data in \texttt{fish-3.9mgL.dat},
-    an external file}
-\end{figure}
-
-\clearpage
-
 \begin{table}
   \centering
   \pgfplotstabletypeset{fish-8.9mgL.dat} % Print out our data
@@ -27,8 +11,6 @@
     \texttt{fish-8.9mgL.dat}}
 \end{table}
 
-
-
 \begin{table}
   \centering
   \pgfplotstabletypeset{fish-3.9mgL.dat} % Print out our data
@@ -36,8 +18,6 @@
   \caption{The table typeset directly from the data in
     \texttt{fish-3.9mgL.dat}}
 \end{table}
-
-\clearpage
 
 \begin{figure}
   \centering
@@ -70,9 +50,11 @@
    \end{axis}
   \end{tikzpicture}
   
-  \caption{A plot of the data in \texttt{measurements.dat}, with plot
-    smoothing and error bars calculated directly from the original
-    measurements.}
+  \caption{A plot of the data in our external files.
+    The error bars are calculated and placed automatically,
+    the legend is very simply placed,
+    and the display itself is extraordinarily professional.
+  }
 \end{figure}
 
 \end{document}
