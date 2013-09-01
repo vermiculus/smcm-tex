@@ -1,0 +1,47 @@
+\newcommand{\calcrowmean}{
+    \def\rowmean{0}
+    \pgfmathparse{\pgfkeysvalueof{/pgfplots/table/summary statistics/end index}-\pgfkeysvalueof{/pgfplots/table/summary statistics/start index}+1}
+    \edef\numberofcols{\pgfmathresult}
+            % ... loop over all columns, summing up the elements
+    \pgfplotsforeachungrouped \col in {\pgfkeysvalueof{/pgfplots/table/summary statistics/start index},...,\pgfkeysvalueof{/pgfplots/table/summary statistics/end index}}{
+        \pgfmathparse{\rowmean+\thisrowno{\col}/\numberofcols}
+        \edef\rowmean{\pgfmathresult}
+    }
+}
+\newcommand{\calcstddev}{
+    \def\rowstddev{0}
+    \calcrowmean
+    \pgfplotsforeachungrouped \col in {\pgfkeysvalueof{/pgfplots/table/summary statistics/start index},...,\pgfkeysvalueof{/pgfplots/table/summary statistics/end index}}{
+        \pgfmathparse{\rowstddev+(\thisrowno{\col}-\rowmean)^2/(\numberofcols-1)}
+        \edef\rowstddev{\pgfmathresult}
+    }
+    \pgfmathparse{sqrt(\rowstddev)}
+}
+\newcommand{\calcstderror}{
+    \calcrowmean
+    \calcstddev
+    \pgfmathparse{sqrt(\rowstddev)/sqrt(\numberofcols)}
+}
+
+\pgfplotstableset{
+    summary statistics/start index/.initial=1,
+    summary statistics/end index/.initial=4,
+    create col/mean/.style={
+        /pgfplots/table/create col/assign/.code={% In each row ... 
+            \calcrowmean
+            \pgfkeyslet{/pgfplots/table/create col/next content}\rowmean
+        }
+    },
+    create col/standard deviation/.style={
+        /pgfplots/table/create col/assign/.code={% In each row ... 
+            \calcstddev
+            \pgfkeyslet{/pgfplots/table/create col/next content}\pgfmathresult
+        }
+    },
+    create col/standard error/.style={
+        create col/assign/.code={% In each row ... 
+            \calcstderror
+            \pgfkeyslet{/pgfplots/table/create col/next content}\pgfmathresult
+        }
+    }
+}

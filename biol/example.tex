@@ -1,0 +1,65 @@
+% Every line that starts with % is a comment
+\documentclass{article}
+\usepackage{setup}
+
+\begin{document}
+\begin{table}
+  \centering
+  \pgfplotstabletypeset{fish-8.9mgL.dat} % Print out our data
+
+  \caption{The table typeset directly from the data in
+    \texttt{fish-8.9mgL.dat}}
+\end{table}
+
+\begin{table}
+  \centering
+  \pgfplotstabletypeset{fish-3.9mgL.dat} % Print out our data
+
+  \caption{The table typeset directly from the data in
+    \texttt{fish-3.9mgL.dat}}
+\end{table}
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[ybar, % This is a bar graph with the bars along
+                       % the y axis
+      title={Comparison of Opercullum openings
+        with varying Oxygen content},        % title!!
+      xlabel=Fish,                           % x axis label
+      ylabel=Opercullum openings per minute, % y axis label
+      legend pos=outer north east]
+      
+      \addplot+[error bars/y dir=both, % we want the y error bars
+                                       % to go up AND down
+                error bars/y explicit] % and we want to state their
+                                       % column explicitly
+        table[x=fishy, % our x axis is the fish
+              y=mean,  % our y axis is the average openings per minute
+        y error=stderror]  % and our y error is stderror
+        {fish-8.9mgL.dat}; % and here is our data!
+      \addlegendentry{\SI{8.9}{\milli\gram\per\liter}};      
+
+      \addplot+[error bars/y dir=both,
+                error bars/y explicit]
+        table[x=fishy,
+              y=mean,
+        y error=stderror]
+        {fish-3.9mgL.dat};
+      \addlegendentry{\SI{3.9}{\milli\gram\per\liter}};
+   \end{axis}
+  \end{tikzpicture}
+  
+  \caption{A plot of the data in our external files.
+    The error bars are calculated and placed automatically,
+    the legend is very simply placed,
+    and the display itself is extraordinarily professional.
+  }
+\end{figure}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
