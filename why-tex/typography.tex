@@ -1,12 +1,44 @@
-\documentclass[twocolumn]{article}
+\documentclass{article}
 
-\title{My \LaTeX\ Document!}
+\input{../canned/definitions}
+
+\title{The Beauty of \TeX}
 \author{Sean Allred}
 
 \usepackage{mwe}
 \begin{document}
 \maketitle
-\blindmathtrue
+\tableofcontents
+
+\section{Introduction}
+\label{sec:introduction}
+
+As opposed to \MicrosoftWord,
+  \TeX\ is run on an input file and
+  doesn't need to produce the final copy
+  several times a second.
+This means that \TeX\ can spend
+  the necessary time needed
+  to make your document
+  look absolutely \emph{gorgeous},
+  not to mention \emph{readable}.
+
+\section{Kerning}
+\label{sec:kerning}
+
+\TeX\ 
+
+\section{Ligatures}
+\label{sec:ligatures}
+
+\section{Small Caps}
+\label{sec:small-caps}
+
+\section{Justification}
+\label{sec:justification}
+
+
+
 efficient firefly \\
 ef{}f{}icient f{}iref{}ly\\
 AVAST A{}VAST
@@ -18,4 +50,5 @@ AVAST A{}VAST
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: t
+%%% TeX-engine: xetex 
 %%% End: 
