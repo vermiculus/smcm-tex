@@ -1,0 +1,29 @@
+\usepackage{pgfplots,
+  pgfplotstable,
+  booktabs,
+  colortbl,
+  pgfplotstat,
+  verbatim,
+  amsmath,
+  siunitx,
+  mhchem}
+\pgfplotsset{compat=1.7}
+
+
+\pgfplotstableset{
+  summary statistics/start index/.initial=1,
+  summary statistics/end index/.initial=3,
+  create on use/mean/.style={create col/mean},
+  create on use/stddev/.style={create col/standard deviation},
+  create on use/stderror/.style={create col/standard error},
+  every head row/.style={
+    before row={\toprule},
+    after row={\midrule}},
+  every last row/.style={
+    after row={\bottomrule}},
+  every even row/.style={
+    before row={\rowcolor[gray]{0.9}}},
+  columns/.style={
+    dec sep align}}
+
+\sisetup{per-mode=symbol-or-fraction}
