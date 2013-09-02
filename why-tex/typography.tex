@@ -2,7 +2,7 @@
 \usepackage{comparison}
 
 \input{../canned/definitions}
-\usepackage{booktabs,array,hyperref}
+\usepackage{booktabs,array,pdfpages,hyperref}
 
 \newcommand{\twcomp}[2]{%
   \vspace{2ex}
@@ -19,7 +19,7 @@
 \title{The Beauty of \TeX}
 \author{Sean Allred}
 
-\usepackage{mwe}
+\usepackage{mwe,kantlipsum}
 \begin{document}
 \maketitle
 
@@ -83,6 +83,11 @@ See \autoref{tab:compare} for a visual comparison.
 
 \NewTerm{Ligatures} are another such special treatment of letters.
 When combined, some letters can `clash' with each other in rather ugly ways.
+While viewed up close the `smushed' glyphs may seem a little strange,
+  their appearance in text often goes unnoticed.
+Free from the microdistraction of clashing letters,
+  the reader is able to, well, read!
+See \autoref{tab:compare} for a visual comparison.
 
 \section{Small Caps}
 \label{sec:small-caps}
@@ -100,17 +105,20 @@ When combined, some letters can `clash' with each other in rather ugly ways.
   \def\notex{\addfontfeature{Ligatures=NoCommon,Kerning=Off}}
   \begin{tabular}{ c c }
     \toprule
-     \TeX & \MicrosoftWord \\
+    \TeX & \MicrosoftWord \\
     \midrule
     \resize Table & \resize\notex T\kern.5ptable \\
     \resize SALT & \resize\notex SAL\kern.6ptT \\
     \resize AVAST & \resize\notex A\kern.3ptV\kern.3ptAST \\
+    \resize\slshape AVAST & \resize\notex\slshape A\kern.3ptV\kern.3ptAST \\
     \resize `L' & \resize\notex `L\kern1pt' \\
     \midrule
     \resize efficient firefly & \resize\notex ef\kern1ptf\kern1pticient f\kern.2ptiref\kern1.5ptly \\
     \resize fiery fjord & \resize\notex f\kern.8ptiery f\kern.8ptjord \\
     \midrule
     \resize \textsc{Small Caps} & \resize\notex S{\normalsize MALL} C{\normalsize APS} \\
+    \midrule
+    \multicolumn{2}{p{.7\linewidth}}{For a comparison of justification, please refer to the last page of this article for an example and statistical analysis written by Roel Zinkstok for Zink~Typography.}\\
     \bottomrule
   \end{tabular}
 }
@@ -123,6 +131,9 @@ When combined, some letters can `clash' with each other in rather ugly ways.
 
 \lipsum\noindent
 \includegraphics[width=\linewidth]{example-image-a}
+
+\cleardoublepage
+\includepdf{comparison}
 \end{document}
 
 %%% Local Variables: 
