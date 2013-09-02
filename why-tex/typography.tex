@@ -2,7 +2,7 @@
 \usepackage{comparison}
 
 \input{../canned/definitions}
-\usepackage{hyperref}
+\usepackage{booktabs,array,hyperref}
 
 \newcommand{\twcomp}[2]{%
   \vspace{2ex}
@@ -12,6 +12,9 @@
   \vspace{2ex}
   \par\noindent
 }
+
+\usepackage{fontspec,xltxtra}
+\setmainfont[Ligatures=TeX]{Hoefler Text}
 
 \title{The Beauty of \TeX}
 \author{Sean Allred}
@@ -31,7 +34,7 @@ This means that \TeX\ can spend
   look absolutely \emph{gorgeous},
   not to mention exceptionally readable.
 (After all, \TeX\ was written to typeset the author's own books;
- his publisher's work was allegedly not up to his standards.)
+ his publisher's work (especially for mathematics) was not up to his standards.)
 This short article hopes
   to expose some of the finer details
   of \TeX's workmanship.
@@ -69,16 +72,17 @@ Thus, most typesetters in the days of hand-printing
 Today, computers---not typesetters---control most of our document needs.
 Computers do not follow these practices by default,
   and products like \MicrosoftWord\ simply do not have the capability.
-Sometimes, this is barely noticeable (but still ugly to the trained eye):
-\twcomp{Table}{T{}able}
-Other times, the blunder is obvious and simply obtrusive:
-\twcomp{AVAST}{A{}V{}AST}
+Sometimes, this is barely noticeable (but still ugly to the trained eye),
+  while other times the blunder is obvious and simply obtrusive.
+See \autoref{tab:compare} for a visual comparison.
+
 
 
 \section{Ligatures}
 \label{sec:ligatures}
 
-\twcomp{efficient firefly}{ef{}f{}icient f{}iref{}ly}
+\NewTerm{Ligatures} are another such special treatment of letters.
+When combined, some letters can `clash' with each other in rather ugly ways.
 
 \section{Small Caps}
 \label{sec:small-caps}
@@ -87,9 +91,37 @@ Other times, the blunder is obvious and simply obtrusive:
 \label{sec:justification}
 
 
+\appendix
+
+\begin{table}
+  \centering
+{
+  \def\resize{\LARGE}
+  \def\notex{\addfontfeature{Ligatures=NoCommon,Kerning=Off}}
+  \begin{tabular}{ c c }
+    \toprule
+     \TeX & \MicrosoftWord \\
+    \midrule
+    \resize Table & \resize\notex T\kern.5ptable \\
+    \resize SALT & \resize\notex SAL\kern.6ptT \\
+    \resize AVAST & \resize\notex A\kern.3ptV\kern.3ptAST \\
+    \resize `L' & \resize\notex `L\kern1pt' \\
+    \midrule
+    \resize efficient firefly & \resize\notex ef\kern1ptf\kern1pticient f\kern.2ptiref\kern1.5ptly \\
+    \resize fiery fjord & \resize\notex f\kern.8ptiery f\kern.8ptjord \\
+    \midrule
+    \resize \textsc{Small Caps} & \resize\notex S{\normalsize MALL} C{\normalsize APS} \\
+    \bottomrule
+  \end{tabular}
+}
+  \caption{A comparison of \TeX\ and other word processing solutions
+    (such as \MicrosoftWord) in regards to
+    kerning, ligatures, and small capitals}
+  \label{tab:compare}
+\end{table}
 
 
-\lipsum
+\lipsum\noindent
 \includegraphics[width=\linewidth]{example-image-a}
 \end{document}
 
