@@ -1,8 +1,10 @@
-\documentclass{article}
+\documentclass[draft]{article}
 \usepackage{comparison}
 
 \input{../canned/definitions}
 \usepackage{booktabs,array,pdfpages,hyperref}
+\newcolumntype{Z}{>{\addfontfeature{Ligatures=NoCommon,Kerning=Off}}c}
+
 
 \newcommand{\twcomp}[2]{%
   \vspace{2ex}
@@ -69,7 +71,7 @@ Thus, most typesetters in the days of hand-printing
   made special stamps for these combinations
   that had spacing that looked right.
 
-Today, computers---not typesetters---control most of our document needs.
+Today, computers---not typesetters---control almost all of our document needs.
 Computers do not follow these practices by default,
   and products like \MicrosoftWord\ simply do not have the capability.
 Sometimes, this is barely noticeable (but still ugly to the trained eye),
@@ -95,6 +97,7 @@ See \autoref{tab:compare} for a visual comparison.
 \section{Justification}
 \label{sec:justification}
 
+Lastly, \TeX's justification algorithm 
 
 \appendix
 
@@ -118,7 +121,10 @@ See \autoref{tab:compare} for a visual comparison.
     \midrule
     \resize \textsc{Small Caps} & \resize\notex S{\normalsize MALL} C{\normalsize APS} \\
     \midrule
-    \multicolumn{2}{p{.7\linewidth}}{For a comparison of justification, please refer to the last page of this article for an example and statistical analysis written by Roel Zinkstok for Zink~Typography.}\\
+    \multicolumn{2}{p{.7\linewidth}}{%
+      For a comparison of justification, please refer to
+      the last page of this article for an example and
+      statistical analysis written by Roel Zinkstok for Zink~Typography.}\\
     \bottomrule
   \end{tabular}
 }
