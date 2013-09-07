@@ -1,4 +1,4 @@
-\documentclass[draft]{article}
+\documentclass{article}
 \usepackage{comparison}
 
 \input{../canned/definitions}
@@ -94,10 +94,43 @@ See \autoref{tab:compare} for a visual comparison.
 \section{Small Caps}
 \label{sec:small-caps}
 
+\NewTerm{Small capitals} are uppercase letters set
+  at the same height and width
+  as surrounding lowercase letters.
+They are used primarily to draw attention to words
+  without overwhelming the surrounding text,
+  such as the first few words of each chapter in a book.
+Usually, the font information provides a `small caps' variant included,
+  but \MicrosoftWord\ finds it faster to
+  simply scale the existing capital letters
+  to an `appropriate' size, resulting in overly-light strokes
+  and a generally awkward `look' about it.
+
+From Wikipedia:
+\begin{quote}
+  Because the support for the petite caps feature
+    is absent from most desktop-publishing programs,
+    many fonts use x-height small caps in the small-caps feature.
+  Well designed small capitals are
+    not simply scaled-down versions of normal capitals;
+    they normally retain the same stroke weight
+    as other letters and have a wider aspect ratio for readability.
+\end{quote}
+See \autoref{tab:compare} for a visual comparison of this as well.
+
 \section{Justification}
 \label{sec:justification}
 
-Lastly, \TeX's justification algorithm 
+Lastly, \TeX's justification algorithm (Knuth--Plass) is its great claim to fame.
+While \MicrosoftWord\ does line breaking on a line-by-line basis,
+  \TeX\ chooses a paragraph's breakpoints considering the entire paragraph,
+  choosing the most feasible option available.
+(This is one of the reasons \MicrosoftWord doesn't use the algorithm;
+ even small changes in wording in one part of the paragraph
+ can completely change the line breaks \TeX\ chooses---it will choose \emph{the best}.)
+See the last page of this article for
+  a wonderful demonstration and statistical analysis
+  of this difference.
 
 \appendix
 
@@ -108,23 +141,23 @@ Lastly, \TeX's justification algorithm
   \def\notex{\addfontfeature{Ligatures=NoCommon,Kerning=Off}}
   \begin{tabular}{ c c }
     \toprule
-    \TeX & \MicrosoftWord \\
+    \TeX                        & \MicrosoftWord                                                     \\
     \midrule
-    \resize Table & \resize\notex T\kern.5ptable \\
-    \resize SALT & \resize\notex SAL\kern.6ptT \\
-    \resize AVAST & \resize\notex A\kern.3ptV\kern.3ptAST \\
-    \resize\slshape AVAST & \resize\notex\slshape A\kern.3ptV\kern.3ptAST \\
-    \resize `L' & \resize\notex `L\kern1pt' \\
+    \resize Table               & \resize\notex T\kern.5ptable                                       \\
+    \resize SALT                & \resize\notex SAL\kern.6ptT                                        \\
+    \resize AVAST               & \resize\notex A\kern.3ptV\kern.3ptAST                              \\
+    \resize\slshape AVAST       & \resize\notex\slshape A\kern.3ptV\kern.3ptAST                      \\
+    \resize `L'                 & \resize\notex `L\kern1pt'                                          \\
     \midrule
-    \resize efficient firefly & \resize\notex ef\kern1ptf\kern1pticient f\kern.2ptiref\kern1.5ptly \\
-    \resize fiery fjord & \resize\notex f\kern.8ptiery f\kern.8ptjord \\
+    \resize efficient firefly   & \resize\notex ef\kern1ptf\kern1pticient f\kern.2ptiref\kern1.5ptly \\
+    \resize fiery fjord         & \resize\notex f\kern.8ptiery f\kern.8ptjord                        \\
     \midrule
-    \resize \textsc{Small Caps} & \resize\notex S{\normalsize MALL} C{\normalsize APS} \\
+    \resize \textsc{Small} caps & \resize\notex S{\Large MALL} caps                                  \\
     \midrule
     \multicolumn{2}{p{.7\linewidth}}{%
       For a comparison of justification, please refer to
       the last page of this article for an example and
-      statistical analysis written by Roel Zinkstok for Zink~Typography.}\\
+      statistical analysis written by Roel Zinkstok for Zink~Typography.}                            \\
     \bottomrule
   \end{tabular}
 }
