@@ -1,6 +1,7 @@
 TEXMFHOME := $(shell kpsewhich -var-value TEXMFHOME)
-SMCM_TEX  := $(TEXMFHOME)/tex/latex/playtex
+SMCM_TEX  := $(TEXMFHOME)/tex/latex/smcm-tex/
 PACKAGES  := psyc cosc math biol
+INSTALL   := install -m 644
 
 default:
 	$(info Run 'make install' to install my styles.)
@@ -10,7 +11,22 @@ default:
 
 install:
 	install -m 755 -d $(SMCM_TEX)
-	install -m 644 exam-extensions.sty smcm-danda.sty smcm-math.sty $(SMCM_TEX)
+
+cosc:
+	$(INSTALL) smcm-tex/cosc/smcm-cosc-smp.cls   $(SMCM_TEX)
+	$(INSTALL) smcm-tex/cosc/smcm-cosc-danda.sty $(SMCM_TEX)
+
+math:
+	$(INSTALL) smcm-tex/math/smcm-math.sty     $(SMCM_TEX)
+
+psyc:
+	#$(INSTALL) psyc/
+
+biol:
+	#$(INSTALL) biol/
+
+util:
+	$(INSTALL) smcm-tex/util/exam-extensions.sty $(SMCM_TEX)
 
 tl-pgf:
 	tlmgr update pgf
