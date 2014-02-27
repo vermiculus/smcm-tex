@@ -15,22 +15,24 @@ all:
 	$(MAKE) util
 	$(MAKE) cosc
 	$(MAKE) math
+	$(MAKE) psyc
+	$(MAKE) biol
 
 install:
 	install -m 755 -d $(SMCM_TEX)
 
 cosc:
-	$(INSTALL) smcm-tex/cosc/smcm-cosc-smp.cls   $(SMCM_TEX)
+	$(INSTALL) smcm-tex/cosc/smcm-cosc-smp.cls $(SMCM_TEX)
 	$(INSTALL) smcm-tex/cosc/smcm-cosc-danda.sty $(SMCM_TEX)
 
 math:
-	$(INSTALL) smcm-tex/math/smcm-math.sty     $(SMCM_TEX)
+	$(INSTALL) smcm-tex/math/smcm-math.sty $(SMCM_TEX)
 
 psyc:
-	#$(INSTALL) psyc/
+	$(INSTALL) smcm-tex/psyc/smcm-psyc-paper.cls $(SMCM_TEX)
 
 biol:
-	#$(INSTALL) biol/
+	$(INSTALL) smcm-tex/biol/smcm-biol.sty $(SMCM_TEX)
 
 util:
 	$(INSTALL) smcm-tex/util/exam-extensions.sty $(SMCM_TEX)
