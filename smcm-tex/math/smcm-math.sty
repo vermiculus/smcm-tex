@@ -1,0 +1,171 @@
+\RequirePackage{amsmath,esint}
+\RequirePackage{xparse,expl3}
+\ExplSyntaxOn
+
+\RequirePackage{centernot}
+\RequirePackage{amssymb, amsmath, amsthm}
+
+\NewDocumentCommand \caseif { }
+  {
+    \text{if}
+    \enspace
+  }
+
+\NewDocumentCommand \suchthat { }
+  {
+    :
+  }
+
+\NewDocumentCommand \normsubgroup { }
+  {
+    \trianglelefteq
+  }
+
+% #1 -- surface integral
+% #2 -- number of integrals (1-4 ok, 5+ ... with numeral)
+%       (surface integrals only 1-2)
+% #3 -- differential variable
+% #4 -- integrand
+\NewDocumentCommand \Int {s D<>{1} O{x} m}
+  {
+    \IfBooleanTF { #1 }
+      {
+
+      }
+      {
+        \int_compare:nTF
+        % test to see if #2 is within 1-4
+        % if so, repeat 'i' that many times in int thing and use
+        % if not, use \dotsint and super the n
+        \use:c
+          {
+            % if star, add an o
+            % repeat i
+          }
+      }
+  }
+
+\NewDocumentCommand \Coprime { m m }
+  {
+    #1 \perp #2
+  }
+
+\NewDocumentCommand \Mod { m }
+  {
+    \overline{#1}
+  }
+
+\NewDocumentCommand \qeq { }
+  {
+    \stackrel{?}{=}
+  }
+
+\NewDocumentCommand \contra { }
+  {
+    \blitza
+  }
+
+\NewDocumentCommand \niff { }
+  {
+    \centernot \iff
+  }
+
+\NewDocumentCommand \cross { }
+  {
+    \times
+  }
+
+\NewDocumentCommand \isomorphic { }
+  {
+    \cong
+  }
+
+\NewDocumentCommand \nisomorphic { }
+  {
+    \ncong
+  }
+
+\NewDocumentCommand \subgroup { }
+  {
+    \leq
+  }
+
+\newcounter{thecase}
+\NewDocumentEnvironment { proofcases } { }
+{
+  \setcounter{thecase}{0}
+  \NewDocumentCommand \case { o }
+  {
+    \par
+    {
+      \bfseries
+      \refstepcounter{thecase}
+      Case~\arabic{thecase}
+      \IfValueT {##1}
+        {~(##1)}:
+    }
+    \hspace{1em}
+  }
+  \vspace{1ex plus .2ex minus .2ex}
+} {
+  \par
+  \vspace{1ex plus .2ex minus .2ex}
+}
+
+\newcommand\iffproofstart{To~ prove~ the~ given~ statement,~
+  each~ direction~ must~ be~ shown:}
+\newcommand\iffproofstop{With~ both~ statements~ proven,~
+  we~ can~ conclude~ the~ bidirectional~ implication.}
+\newenvironment{iffproof}{
+    \newcommand{\pif}{\item[($\Rightarrow$):]}
+    \newcommand{\pfi}{\item[($\Leftarrow$):]}
+    \begin{proof}\iffproofstart\begin{itemize}
+}{
+    \end{itemize}\iffproofstop\end{proof}
+}
+
+\ProvideDocumentEnvironment { iffproof } { }
+{
+  \newcommand\pif{\item[($\Rightarrow$):]}
+  \newcommand\pif{\item[($\Leftarrow$):]}
+  \itemize
+} {
+  \enditemize
+}
+
+\ProvideDocumentEnvironment { matrix } { } {
+  \left[
+  \begin{array}
+} {
+  \end{array}
+  \right]
+}
+
+\RequirePackage{mathtools}
+
+\DeclarePairedDelimiter \Ceil  {\lceil}
+                               {\rceil}
+\DeclarePairedDelimiter \Floor {\lfloor}
+                               {\rfloor}
+\DeclarePairedDelimiter \Abs   {\lvert}
+                               {\rvert}
+
+\NewDocumentCommand \Set { s o m o } {
+  \IfBooleanTF { #1 } { \left  } { \IfValueT { #2 } { #2 }} \{
+  #3 \IfValueT{ #4 }{ \suchthat #4 }
+  \IfBooleanTF { #1 } { \right } { \IfValueT { #2 } { #2 }} \}
+}
+
+\NewDocumentCommand \Exists { m m } {
+  \exists #1 \suchthat #2
+}
+
+\DeclareMathOperator    \LCM   {\textsc{lcm}}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{rem}{Remark}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+
+\ExplSyntaxOff

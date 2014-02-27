@@ -1,0 +1,65 @@
+\RequirePackage{expl3}
+\ProvidesExplPackage
+{exam-extensions}
+{2014/01/01}
+{1.0}
+{Extensions to the `exam` document class}
+\RequirePackage{xparse}
+
+\NewDocumentCommand \xquestion { m } {
+  \setcounter{question}{\int_eval:n {#1 - 1}}
+  \question
+}
+
+\NewDocumentCommand \xpart { m } {
+  \setcounter{partno}{\int_eval:n {#1 - 1}}
+  \part
+}
+
+\NewDocumentCommand \qsection { m } {
+  \uplevel{\hrulefill\quad\textbf{#1}\quad\hrulefill}
+}
+
+% \assignment{Class}{Code}
+\DeclareDocumentCommand \maketitle { } {
+  \firstpageheadrule
+  \runningheadrule
+  \firstpagefootrule
+  \runningfootrule
+
+  \firstpageheader
+    {\@coursecode \\ \@class}
+    {\thepage\ of~\numpages}
+    {\@date \\ \@author}
+
+  \firstpagefooter
+    {}
+    {\@title}
+    {}
+
+  \runningheader
+    {\@class}
+    {\thepage\ of~\numpages}
+    {\@author}
+
+  \runningfooter
+    {}
+    {\@title}
+    {}
+}
+
+\NewDocumentCommand \coursecode { m } {
+  \def\@coursecode{#1}
+}
+
+\NewDocumentCommand \class { m } {
+  \def\@class{#1}
+}
+
+\newcommand \xquestions@titleformat [1] {
+  \centerline{\bfseries Section~#1}
+}
+\NewDocumentEnvironment { xquestions } { o } {
+  \IfValueT {#1} { \xquestions@titleformat { #1 } }
+  \questions
+} { \endquestions }

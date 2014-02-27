@@ -1,0 +1,62 @@
+\RequirePackage{tikz}
+\usetikzlibrary{arrows}
+\tikzset{
+  node distance = 3 cm,
+  graph vertex/.style={
+    circle,
+    draw,
+    minimum size=7.5mm,
+  },
+  graph edge weight/.style={
+    graph edge label,
+    font=\small,
+    rectangle,
+    fill=white,
+    draw=black!20,
+  },
+  graph undirected edge/.style={
+    semithick,
+  },
+  graph directed edge/.style={
+    graph undirected edge,
+    >=stealth,
+    ->,
+  },
+  graph edge label/.style={
+    fill=white,
+    font=\ttfamily,
+    draw=none,
+  },
+  graph tree edge/.style={
+    graph directed edge,
+    every edge/.style={
+      edge node={node [graph edge label] {t}},
+      draw,
+    },
+  },
+  graph forward edge/.style={
+    graph directed edge,
+    every edge/.style={
+      edge node={node [graph edge label] {f}},
+      loosely dotted,
+      draw,
+    },
+  },
+  graph back edge/.style={
+    graph directed edge,
+    every edge/.style={
+      edge node={node [graph edge label] {b}},
+      densely dotted,
+      draw,
+    },
+  },
+  graph cross edge/.style={
+    graph directed edge,
+    every edge/.style={
+      edge node={node [graph edge label] {c}},
+      loosely dashed,
+      draw,
+    },
+  },
+}
+
