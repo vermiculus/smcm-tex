@@ -36,3 +36,4 @@
 *.pdf
 *.run.xml
 *.ttt
+/#makefile#
