@@ -9,6 +9,13 @@ default:
 	$(info Run '     make mt-pgf' as an administrator; same as tl-, but for MiKTeX.)
 	$(info Run 'make clean' to clean up.)
 
+all:
+	$(MAKE) install
+	$(MAKE) tl-pgf
+	$(MAKE) util
+	$(MAKE) cosc
+	$(MAKE) math
+
 install:
 	install -m 755 -d $(SMCM_TEX)
 
