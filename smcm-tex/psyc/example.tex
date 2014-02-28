@@ -2,6 +2,11 @@
 % arara: biber
 % arara: pdflatex
 % arara: pdflatex
+% arara: clean: { files: [ example.aux, example.log ] }
+% arara: clean: { files: [ example.out, example.toc ] }
+% arara: clean: { files: [ example.bbl, example.bcf ] }
+% arara: clean: { files: [ example.blg, example.ttt ] }
+% arara: clean: { files: [ example.run.xml ] }
 \documentclass{smcm-psyc-paper}
 
 \bibliography{refs}

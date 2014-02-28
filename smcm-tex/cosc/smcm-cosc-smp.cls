@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \RequirePackage{expl3,l3keys2e}
 \ProvidesExplClass
-{cs-smp}
+{smcm-cosc-smp}
 {2013/12/23}
 {1.0}
 {A class for St. Mary's Projects in Computer Science}
