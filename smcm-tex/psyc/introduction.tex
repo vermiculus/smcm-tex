@@ -1,10 +1,15 @@
-\documentclass{psypaper}
+% arara: pdflatex
+% arara: pdflatex
+% arara: clean: { files: [ introduction.aux, introduction.log ] }
+% arara: clean: { files: [ introduction.toc, introduction.out ] }
+% arara: clean: { files: [ introduction.bcf, introduction.run.xml ] }
+\documentclass{smcm-psyc-paper}
 
 % These are some system-wide definitions I'm making for these pieces
 % of documentation.  This is evidence of another great strength of
 % LaTeX---consistency.  I make one change in this file and my changes
 % are reflected across each one of my documents.
-\input{../canned/definitions}
+\input{../../canned/definitions}
 
 \title{A Conceptual and Utilitarian Introduction to \LaTeX}
 \shorttitle{Introduction to \LaTeX}
