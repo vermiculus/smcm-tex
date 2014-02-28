@@ -10,12 +10,12 @@ default:
 	$(info Run 'make clean' to clean up.)
 
 all:
-	$(MAKE) install
-	$(MAKE) util
-	$(MAKE) cosc
-	$(MAKE) math
-	$(MAKE) psyc
-	$(MAKE) biol
+	@$(MAKE) install
+	@$(MAKE) util
+	@$(MAKE) cosc
+	@$(MAKE) math
+	@$(MAKE) psyc
+	@$(MAKE) biol
 
 install:
 	install -m 755 -d $(SMCM_TEX)
