@@ -11,7 +11,6 @@ default:
 
 all:
 	$(MAKE) install
-	$(MAKE) tl-pgf
 	$(MAKE) util
 	$(MAKE) cosc
 	$(MAKE) math
