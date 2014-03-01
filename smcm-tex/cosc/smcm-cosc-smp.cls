@@ -153,11 +153,18 @@
 %%% Parameter Customizations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\NewDocumentEnvironment { warning } { } {
+
+\RequirePackage{manfnt}
+\NewDocumentEnvironment { warning } { O{1} } {
   \par
-  \textbf{Warning: }
+  \vspace{1ex plus .2ex minus .1ex}
+  \noindent
+  \hspace{\dimexpr  -1.2 in + \parindent\relax}
+  \makebox[\dimexpr +1.2 in - \parindent\relax][c]{\prg_replicate:nn {#1} {\dbend\,}\unskip}
+  \textbf{Warning:\quad}
 }{
   \par
+  \vspace{1ex plus .2ex minus .1ex}
 }
 
 \NewDocumentEnvironment { draftvspace } { m } {
@@ -172,8 +179,3 @@
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
-
-% Local Variables:
-% TeX-PDF-mode: t
-% TeX-master: "smp.tex"
-% End:
