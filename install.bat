@@ -1,9 +1,9 @@
-REM Windows version of the makefile,
-REM for all you Windoze users out there.
+rem Windows version of the makefile
+rem for all you Windoze users out there. :)
 
 @ECHO off
 
-REM Get TEXMFHOME as variable
+rem Get TEXMFHOME as variable
 for /f "skip=1" %%a in ('kpsewhich -var-value TEXMFHOME') do if not defined TEXMFHOME set TEXMFHOME=%%a
 PLAYTEX=%TEXMFHOME%/tex/latex/playtex
 
@@ -41,3 +41,8 @@ echo TEXMFHOME=%TEXMFHOME%
 echo PLAYTEX=%PLAYTEX%
 
 :end
+
+rem Local Variables:
+rem mode: dos
+rem truncate-lines: nil
+rem End:
