@@ -5,6 +5,33 @@
 \RequirePackage{centernot}
 \RequirePackage{amssymb, amsmath, amsthm}
 
+\NewDocumentCommand \Naturals { }
+  {
+    \mathbf{N}
+  }
+
+\NewDocumentCommand \Reals { }
+  {
+    \mathbf{R}
+  }
+
+\NewDocumentCommand \Integers { }
+  {
+    \mathbf{Z}
+  }
+
+\NewDocumentCommand \Rationals { }
+  {
+    \mathbf{Q}
+  }
+
+\NewDocumentCommand \Complex { }
+  {
+    \mathbf{C}
+  }
+
+
+
 \NewDocumentCommand \caseif { }
   {
     \text{if}
@@ -158,6 +185,10 @@
 
 \NewDocumentCommand \Exists { m m } {
   \exists #1 \suchthat #2
+}
+
+\NewDocumentCommand \ForAll { m m } {
+  \forall \, #1, \; #2
 }
 
 \DeclareMathOperator    \LCM   {\textsc{lcm}}
