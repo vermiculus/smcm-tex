@@ -146,8 +146,8 @@
 %%% Miscellaneous Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\Dash{\unskip\thinspace\textemdash\thinspace\ignorespaces\allowbreak}
-\def\Elide{\unskip\nobreakspace\textup{[\,\dots]}~\ignorespaces\allowbreak}
+\newcommand\Dash{\unskip\thinspace\textemdash\hspace{.16667em}}
+\newcommand\Elide{\unskip\nobreakspace\textup{[\,\dots]}~\ignorespaces\allowbreak}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Parameter Customizations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
