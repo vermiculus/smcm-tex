@@ -1,14 +1,10 @@
-\RequirePackage{amsmath,esint}
-\RequirePackage{xparse,expl3}
-\ExplSyntaxOn
-
-\RequirePackage{centernot}
-\RequirePackage{amssymb, amsmath, amsthm}
-
-\NewDocumentCommand \Naturals { }
-  {
-    \mathbf{N}
-  }
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\RequirePackage{expl3,l3keys2e}
+\ProvidesExplPackage
+{smcm-math}
+{2014/03/01}
+{1.0}
+{Markup for mathematics}
 
 \NewDocumentCommand \Reals { }
   {
@@ -198,5 +194,3 @@
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem*{cor}{Corollary}
-
-\ExplSyntaxOff

@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\RequirePackage{expl3,l3keys2e}
+\RequirePackage{smcm-common}
 \ProvidesExplClass
 {smcm-cosc-smp}
 {2013/12/23}

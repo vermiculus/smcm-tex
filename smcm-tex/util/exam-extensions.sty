@@ -1,10 +1,9 @@
-\RequirePackage{expl3}
+\RequirePackage{smcm-common}
 \ProvidesExplPackage
 {exam-extensions}
 {2014/01/01}
 {1.0}
 {Extensions to the `exam` document class}
-\RequirePackage{xparse}
 
 \NewDocumentCommand \xquestion { m } {
   \setcounter{question}{\int_eval:n {#1 - 1}}
