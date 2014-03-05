@@ -116,6 +116,8 @@
   \vspace{1ex plus .2ex minus .2ex}
 }
 
+
+% TODO make as token lists
 \newcommand\iffproofstart{To~ prove~ the~ given~ statement,~
   each~ direction~ must~ be~ shown:}
 \newcommand\iffproofstop{With~ both~ statements~ proven,~
@@ -143,6 +145,13 @@
 \DeclarePairedDelimiter \Abs     {\lvert}  {\rvert}
 \DeclareMathOperator \LCM {\textsc{lcm}}
 
+% if star do \left \right
+% if opt 1 and no star then insert sizing command
+% opt 3 does quantifiers
+% \Set*{\text{this is auto-sized}}
+% \Set[\Big]{\text{manual sizing}}
+% \Set{\text{no size}}[\text{with restrictions}]
+% \Set*{x \in \Reals}[x \mod 5 = 0]
 \NewDocumentCommand \Set { s o m o } {
   \IfBooleanTF { #1 } { \left  } { \IfValueT { #2 } { #2 }} \{
   #3 \IfValueT{ #4 }{ \suchthat #4 }
@@ -157,7 +166,6 @@
   \forall \, #1, \; #2
 }
 
-\DeclareMathOperator    \LCM   {\textsc{lcm}}
 \ProvideDocumentCommand \Function { s O{\lambda} m m } {
   #2 \colon #3 \IfBooleanT{#1}{&} \to #4
 }
