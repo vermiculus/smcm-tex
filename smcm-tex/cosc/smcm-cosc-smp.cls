@@ -2,7 +2,7 @@
 \RequirePackage{smcm-common}
 \ProvidesExplClass
 {smcm-cosc-smp}
-{2013/12/23}
+{2014/03/01}
 {1.0}
 {A class for St. Mary's Projects in Computer Science}
 
@@ -10,47 +10,67 @@
 %%% Key-Value Interface %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\keys_define:nn { cs-smp }
+\AfterPackage{listings}{
+  \RequirePackage{xcolor}
+  \lstset{
+    frame=single,
+    frameround=tttt,
+    % TODO background color extends past rounded corner
+    backgroundcolor=\color{blue!5},
+    rulecolor=\color{blue!50!black},
+    showstringspaces=false,
+    showspaces=false,
+    showtabs=false,
+    moredelim=*[s][\lst@stringstyle]{"""}{"""}, % TODO LOAD AFTER LANGUAGE
+    moredelim=[s][\lst@commentstyle]{<<}{>>},
+  }
+  \renewcommand*\lstlistlistingname{List~of~Listings}
+}
+
+\PassOptionsToClass{letterpaper,12pt}{article}
+
+
+\keys_define:nn { smcm-cosc-smp }
   {
-    minp .int_set:N = \g_cssmp_page_min_int,
+    minp .int_set:N = \g_smcm_cosc_smp_page_min_int,
     minp .default:n = 0,
-    maxp .int_set:N = \g_cssmp_page_max_int,
+    maxp .int_set:N = \g_smcm_cosc_smp_page_max_int,
     maxp .default:n = 9999,
-    default .code:n = \msg_info:nnnn { cs-smp } { unknown-option }
-                                                { \l_keys_key_tl }
-                                                { #1 }
-                      \PassOptionToClass{\l_keys_key_tl}{article}
+    default .code:n = {
+      \msg_info:nnnn { smcm-cosc-smp }
+                     { unknown-option }
+                     { \l_keys_key_tl }
+                     { #1 }
+       \PassOptionsToClass{\l_keys_key_tl}{article}
+     },
   }
 
-\ProcessKeysOptions{ cs-smp }
-
-\PassOptionsToClass{letterpaper}{article}
-\LoadClassWithOptions{article}
-
-\RequirePackage[log-declarations=false]{xparse}
-
+\LoadClass{article}
+%\PassOptionsToPackage{log-declarations=false}{xparse}
 \RequirePackage[margin=1in]{geometry}
+
+\ProcessKeysOptions{ smcm-cosc-smp }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Messages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\msg_new:nnnn { cs-smp } { page-length } {
+\msg_new:nnnn { smcm-cosc-smp } { page-length } {
   Your ~ paper ~ doesn't ~ meet ~ the ~ given ~ page ~ limits.
 } {
   This ~ paper ~ was ~ set ~ with ~ the ~ following ~ bounds:
    ~ ~ Minimum: ~ #1
    ~ ~ Maximum: ~ #2
-  Your ~ paper ~ only ~ has ~ #3 ~ pages.
+  Your ~ paper ~ has ~ #3 ~ pages.
 }
 
-\msg_new:nnnn { cs-smp } { unknown-option } {
+\msg_new:nnnn { smcm-cosc-smp } { unknown-option } {
   I ~ don't ~ know ~ the ~ option ~ `#1=#2`.
 } {
   I'm ~ passing ~ it ~ along ~ to ~ the ~ document ~ class.
 }
 
-\msg_new:nnnn { cs-smp} { invalid-bounds } {
+\msg_new:nnnn { smcm-cosc-smp } { invalid-bounds } {
   Invalid ~ page ~ bounds.
 } {
   The ~ minimum ~ cannot ~ be ~ greater ~ than ~ the ~ maximum.
@@ -63,12 +83,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Ensure that min <= max
-\cs_new:Nn \cssmp_validate_bounds: {
-  \int_compare:nNnT { \g_cssmp_page_min_int } > { \g_cssmp_page_max_int }
+\cs_new:Nn \smcm_cosc_smp_validate_bounds: {
+  \int_compare:nNnT { \g_smcm_cosc_smp_page_min_int } > { \g_smcm_cosc_smp_page_max_int }
     {
-      \msg_error:nnnn { cs-smp } { invalid-bounds }
-        { \g_cssmp_page_min_int }
-        { \g_cssmp_page_max_int }
+      \msg_error:nnnn { smcm-cosc-smp } { invalid-bounds }
+        { \g_smcm_cosc_smp_page_min_int }
+        { \g_smcm_cosc_smp_page_max_int }
     }
 }
 
@@ -127,40 +147,29 @@
   \bool_if:nT
   {
     % If we are under the minimum
-    \int_compare_p:nNn { \thepage } < { \g_cssmp_page_min_int }
+    \int_compare_p:nNn { \thepage } < { \g_smcm_cosc_smp_page_min_int }
     ||                          % or over the maximum
-    \int_compare_p:nNn { \g_cssmp_page_max_int } < { \thepage }
+    \int_compare_p:nNn { \g_smcm_cosc_smp_page_max_int } < { \thepage }
   } {                           % issue a warning
-    \msg_warning:nnnnn { cs-smp } { page-length } { \g_cssmp_page_min_int }
-                                                  { \g_cssmp_page_max_int }
-                                                  { \thepage }
+    \msg_warning:nnnnn { smcm-cosc-smp } { page-length }
+                       { \g_smcm_cosc_smp_page_min_int }
+                       { \g_smcm_cosc_smp_page_max_int }
+                       { \thepage }
   }
 }
 
-\NewDocumentCommand \CSSMPSetup { m } {
-  \keys_set:nn { cs-smp } { #1 }
-  \cssmp_validate_bounds:
+\NewDocumentCommand \SMPSetup { m } {
+  \keys_set:nn { smcm-cosc-smp } { #1 }
+  \smcm_cosc_smp_validate_bounds:
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Miscellaneous Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand\Dash{\unskip\thinspace\textemdash\hspace{.16667em}}
-\newcommand\Elide{\unskip\nobreakspace\textup{[\,\dots]}~\ignorespaces\allowbreak}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Parameter Customizations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\RequirePackage{manfnt}
 \NewDocumentEnvironment { warning } { O{1} } {
   \par
   \vspace{1ex plus .2ex minus .1ex}
   \noindent
   \hspace{\dimexpr  -1 in + \parindent\relax}
-  \makebox[\dimexpr +1 in - \parindent\relax][c]{\prg_replicate:nn {#1} {\dbend\,}\unskip}
+  \makebox[\dimexpr +1 in - \parindent\relax][c]{
+    \prg_replicate:nn {#1} {\dbend\,}\unskip}
   \textbf{Warning:\quad}
 }{
   \par
@@ -168,14 +177,18 @@
 }
 
 \NewDocumentEnvironment { draftvspace } { m } {
-  \begin{center}
-    \rule{1pt}{\dimexpr #1 / 2 \relax}
-    \par
+  \center
+  \rule{1pt}{\dimexpr #1 / 2 \relax}
+  \par
 }{
-    \par
-    \rule{1pt}{\dimexpr #1 / 2 \relax}
-  \end{center}
+  \par
+  \rule{1pt}{\dimexpr #1 / 2 \relax}
+  \endcenter
 }
 
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
+
+\setlength\parskip{1ex}
+\setlength\parindent{0em}
+
