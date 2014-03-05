@@ -167,6 +167,20 @@
 }
 
 \DeclareMathOperator    \LCM   {\textsc{lcm}}
+\cs_new:Nn \smcm_join_clist:nnn {
+  \seq_set_split:Nnn \l_tmpa_seq { #2 } { #3 }
+  \seq_use:Nn \l_tmpa_seq { #1 }
+}
+
+% TODO do big variants with star
+\ProvideDocumentCommand \Union { O{\cup} O{,} m } {
+  \smcm_join_clist:nnn {#1}{#2}{#3}
+}
+
+\ProvideDocumentCommand \Intersection { O{\cap} O{,} m } {
+  \smcm_join_clist:nnn {#1}{#2}{#3}
+}
+
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{rem}{Remark}[section]
