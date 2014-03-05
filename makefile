@@ -35,6 +35,7 @@ biol:
 
 util:
 	$(INSTALL) smcm-tex/util/exam-extensions.sty $(SMCM_TEX)
+	$(INSTALL) smcm-tex/util/smcm-common.sty $(SMCM_TEX)
 
 tl-pgf:
 	tlmgr update pgf

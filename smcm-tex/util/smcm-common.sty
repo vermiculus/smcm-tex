@@ -1,0 +1,37 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\RequirePackage{expl3,l3keys2e}
+\ProvidesExplPackage
+{smcm-common}
+{2014/03/02}
+{1.0}
+{Utility macros for smcm-tex bundle}
+
+\RequirePackage{xpatch}
+\RequirePackage{manfnt}
+\RequirePackage{scrlfile}
+\RequirePackage{xparse}
+\RequirePackage{mathtools}
+\RequirePackage{esint}
+\RequirePackage{centernot}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+
+\NewDocumentCommand \Dash { } {
+  \unskip
+  \thinspace
+  \textemdash
+  \hspace{.16667em}
+}
+\NewDocumentCommand \Elide { s } {
+  \unskip
+  \nobreakspace
+  \textup{[\IfBooleanF{#1}{\,}\dots]}
+  ~
+}
+
+\AfterPackage{todo}{
+  \xapptocmd{\@displaytodo}{\ignorespaces}{}{}
+  \xapptocmd{\@donetodo}{\ignorespaces}{}{}
+  \xapptocmd{\@@displaynothing}{\ignorespaces}{}{}
+}
