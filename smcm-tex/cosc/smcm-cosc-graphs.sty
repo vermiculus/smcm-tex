@@ -7,5 +7,22 @@
 {A set of TikZ styles and markup commands for graph theory}
 
 \RequirePackage{smcm-cosc-tikz-graphs}
+
+% \OpenNeighborhood{n}[G]
+
+% Note that \sb is used as the subscript character - this is defined
+% in Plain to be the subscript underscore, where expl3 syntax declares
+% the underscore to be a letter.
+\ProvideDocumentCommand \OpenNeighborhood { o m }
+{
+  \IfValueTF { #1 }
+    { N ^   { #1 } ( #2 ) }
+    { N            ( #2 ) }
 }
 
+\ProvideDocumentCommand \ClosedNeighborhood { o m }
+{
+  \IfValueTF { #1 }
+    { N ^   { #1 } [ #2 ] }
+    { N            [ #2 ] }
+}
