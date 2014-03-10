@@ -1,0 +1,25 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\RequirePackage{smcm-common}
+\ProvidesExplClass
+{smcm-cosc-algorithms}
+{2014/03/01}
+{1.0}
+{Algorithms stuff}
+
+\keys_define:nn { smcm / cosc-algorithm } {
+  input  .tl_set:N = \l_smcm_cosc_algorithm_input_tl,
+  output .tl_set:N = \l_smcm_cosc_algorithm_output_tl,
+}
+
+\NewDocumentCommand \AlgorithmTask { m } {
+  \group_begin:
+  \keys_set:nn { smcm / cosc-algorithm } { #1 }
+  \begin{quote}
+    \renewcommand\descriptionlabel[1]{\hspace{\labelsep}\textit{##1:}}
+    \begin{description}
+    \item[Input]  \tl_use:N \l_smcm_cosc_algorithm_input_tl
+    \item[Output] \tl_use:N \l_smcm_cosc_algorithm_output_tl
+    \end{description}
+  \end{quote}
+  \group_end:
+}

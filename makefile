@@ -24,6 +24,7 @@ cosc:
 	$(INSTALL) smcm-tex/cosc/smcm-cosc-smp.cls $(SMCM_TEX)
 	$(INSTALL) smcm-tex/cosc/smcm-cosc-graphs.sty $(SMCM_TEX)
 	$(INSTALL) smcm-tex/cosc/smcm-cosc-tikz-graphs.sty $(SMCM_TEX)
+	$(INSTALL) smcm-tex/cosc/smcm-cosc-algorithms.sty $(SMCM_TEX)
 
 math:
 	$(INSTALL) smcm-tex/math/smcm-math.sty $(SMCM_TEX)
