@@ -188,6 +188,12 @@
   \smcm_join_clist:nnn {#1}{#2}{#3}
 }
 
+\NewDocumentCommand \QuickSequence { O{,} m O{n} } {
+  {#2}\sb{1} #1
+  {#2}\sb{2} #1
+      \dots  #1
+  {#2}\sb{#3}
+}
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{rem}{Remark}[section]
