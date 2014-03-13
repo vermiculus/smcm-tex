@@ -1,3 +1,5 @@
+PATH=/usr/texbin:$PATH
+
 TEXMFHOME := $(shell kpsewhich -var-value TEXMFHOME)
 SMCM_TEX  := $(TEXMFHOME)/tex/latex/smcm-tex/
 PACKAGES  := psyc cosc math biol
