@@ -1,4 +1,4 @@
-PATH=/usr/texbin:$PATH
+export PATH=/usr/texbin:$PATH
 
 TEXMFHOME := `kpsewhich -var-value TEXMFHOME`
 SMCM_TEX  := $(TEXMFHOME)/tex/latex/smcm-tex/
@@ -59,4 +59,5 @@ docs:
 	$(info Done.)
 
 upd-tl:
+	tlmgr update --self
 	tlmgr update --all
