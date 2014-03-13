@@ -3,7 +3,7 @@ export PATH=/usr/texbin:$PATH
 TEXMFHOME := `kpsewhich -var-value TEXMFHOME`
 SMCM_TEX  := $(TEXMFHOME)/tex/latex/smcm-tex/
 PACKAGES  := psyc cosc math biol
-INSTALL   := install -m 644
+INSTALL   := /usr/bin/install -m 644
 
 default:
 	$(info Run 'make install' to install my styles.)
@@ -20,7 +20,7 @@ all:
 	@$(MAKE) biol
 
 install:
-	install -m 755 -d $(SMCM_TEX)
+	$(INSTALL) -m 755 -d $(SMCM_TEX)
 
 cosc:
 	$(INSTALL) smcm-tex/cosc/smcm-cosc-smp.cls $(SMCM_TEX)
