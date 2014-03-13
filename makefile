@@ -57,3 +57,6 @@ docs:
 		arara $$folder/introduction
 	done
 	$(info Done.)
+
+upd-tl:
+	tlmgr update --all
