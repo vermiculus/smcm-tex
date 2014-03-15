@@ -1,0 +1,35 @@
+\RequirePackage{xcolor}
+\lstset{
+  frame=single,
+  frameround=tttt,
+  % TODO background color extends past rounded corner
+  backgroundcolor=\color{blue!5},
+  rulecolor=\color{blue!50!black},
+  showstringspaces=false,
+  showspaces=false,
+  showtabs=false,
+}
+\renewcommand*\lstlistlistingname{List~of~Listings}
+\lstdefinestyle{python}{
+  language=Python,
+  morekeywords={assert,self},
+  basicstyle=\small\ttfamily,
+  moredelim=*[s][\lst@stringstyle]{"""}{"""},
+}
+
+\lstdefinestyle{litpython}{
+  style=python,
+  moredelim=[s][\lst@commentstyle]{<<}{>>},
+  rangeprefix={\#\%\ },
+  rangesuffix={\ \%\#},
+  includerangemarker=false,
+}
+
+\lstdefinestyle{pythonex}{
+  style=python,
+  morekeywords={@predicate,@move,author,version},
+}
+
+\lst@Key{litkey}\relax{\lstKV@OptArg[]{{#1}-{end-#1}}{%
+    \def\lst@interrange{##1}
+    \def\lst@linerange{##2,}}}

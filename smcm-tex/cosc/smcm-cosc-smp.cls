@@ -11,20 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AfterPackage{listings}{
-  \RequirePackage{xcolor}
-  \lstset{
-    frame=single,
-    frameround=tttt,
-    % TODO background color extends past rounded corner
-    backgroundcolor=\color{blue!5},
-    rulecolor=\color{blue!50!black},
-    showstringspaces=false,
-    showspaces=false,
-    showtabs=false,
-    moredelim=*[s][\lst@stringstyle]{"""}{"""}, % TODO LOAD AFTER LANGUAGE
-    moredelim=[s][\lst@commentstyle]{<<}{>>},
-  }
-  \renewcommand*\lstlistlistingname{List~of~Listings}
+  \RequirePackage{smcm-cosc-listings}
 }
 
 \PassOptionsToClass{letterpaper,12pt}{article}
