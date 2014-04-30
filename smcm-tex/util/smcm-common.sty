@@ -18,11 +18,18 @@
 \RequirePackage{amsthm}
 
 \NewDocumentCommand \Dash { } {
+  \leavevmode
   \unskip
-  \thinspace
+  \nobreak
+  \hspace{\halfspace}
   \textemdash
-  \hspace{.16667em}
+  \hspace{\halfspace}
 }
+\NewDocumentCommand \halfspace { } {
+  .5\fontdimen2\font plus .5\fontdimen3\font minus .5\fontdimen4\font
+}
+
+
 \NewDocumentCommand \Elide { s } {
   \unskip
   \nobreakspace
