@@ -150,18 +150,38 @@
   \smcm_cosc_smp_validate_bounds:
 }
 
+\box_new:N \smcm_cosc_warning_box
+\NewDocumentCommand \SetWarningEnvironmentText { O{\bfseries} m O{\quad}} {
+  \hbox_set:Nn \smcm_cosc_warning_box {
+    {
+      #1
+      #2
+      #3
+    }
+  }
+}
+
+\SetWarningEnvironmentText{ Warning: }
 \NewDocumentEnvironment { warning } { O{1} } {
   \par
+  \dim_set:Nn \hangindent {
+    \box_wd:N \smcm_cosc_warning_box
+  }
+
   \vspace{1ex plus .2ex minus .1ex}
   \noindent
   \hspace{\dimexpr  -1 in + \parindent\relax}
+
   \makebox[\dimexpr +1 in - \parindent\relax][c]{
     \prg_replicate:nn {#1} {\dbend\,}\unskip}
-  \textbf{Warning:\quad}
+
+  \box_use:N \smcm_cosc_warning_box
+  \ignorespaces
 }{
   \par
   \vspace{1ex plus .2ex minus .1ex}
 }
+
 
 \NewDocumentEnvironment { draftvspace } { m } {
   \center
