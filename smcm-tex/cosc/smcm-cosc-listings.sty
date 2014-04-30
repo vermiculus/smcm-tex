@@ -1,5 +1,6 @@
+% cd ../.. && make cosc
 \RequirePackage{xcolor}
-\lstset{
+\lstdefinestyle{smcm-std}{
   frame=single,
   frameround=tttt,
   % TODO background color extends past rounded corner
@@ -11,8 +12,9 @@
 }
 \renewcommand*\lstlistlistingname{List~of~Listings}
 \lstdefinestyle{python}{
+  style=smcm-std,
   language=Python,
-  morekeywords={assert,self},
+  morekeywords={assert,self,None,as},
   basicstyle=\small\ttfamily,
   moredelim=*[s][\lst@stringstyle]{"""}{"""},
 }
