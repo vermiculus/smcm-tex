@@ -35,6 +35,7 @@
 \LoadClass{article}
 %\PassOptionsToPackage{log-declarations=false}{xparse}
 \RequirePackage[margin=1in]{geometry}
+\RequirePackage[format=hang]{caption}
 
 \ProcessKeysOptions{ smcm-cosc-smp }
 
@@ -198,4 +199,6 @@
 
 \setlength\parskip{1ex}
 \setlength\parindent{0em}
-
+\AfterPackage{biblatex}{
+  \setlength\bibitemsep{2ex}
+}
