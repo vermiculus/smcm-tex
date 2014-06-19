@@ -41,25 +41,25 @@
   \trianglelefteq
 }
 
-% #1 -- surface integral
-% #2 -- number of integrals (1-4 ok, 5+ ... with numeral)
-%       (surface integrals only 1-2)
-% #3 -- differential variable
-% #4 -- integrand
-\NewDocumentCommand \Int {s D<>{1} O{x} m} {
-  \IfBooleanTF { #1 } {
+\NewDocumentCommand \Cyclic { m } {
+  \langle #1 \rangle
+}
 
+% #1 -- number of integrals (1-4 ok, 5+ ... with numeral)
+%       (surface integrals only 1-2)
+% #2 -- integrand
+% #3 -- differential variable
+\NewDocumentCommand \Integrate {O{1} m O{x}} {
+  \int_compare:nTF { 1 <= #1 <= 4 } {
+    \use:c { \prg_replicate:nn { #1 } { i } nt }
   } {
-        \int_compare:nTF
-        % test to see if #2 is within 1-4
-        % if so, repeat 'i' that many times in int thing and use
-        % if not, use \dotsint and super the n
-        \use:c {
-          % if star, add an o
-          % repeat i
-          }
-      }
+    \overbrace{\int\!\! \cdots\!\! \int}^{#1}
   }
+  \!\!
+  #2
+  \,\,
+  d#3
+}
 
 \NewDocumentCommand \Coprime { m m } {
   #1 \perp #2
