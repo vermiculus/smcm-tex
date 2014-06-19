@@ -139,7 +139,7 @@
   \enditemize
 }
 
-
+\RequirePackage{mathtools}
 \DeclarePairedDelimiter \Ceiling {\lceil}  {\rceil}
 \DeclarePairedDelimiter \Floor   {\lfloor} {\rfloor}
 \DeclarePairedDelimiter \Abs     {\lvert}  {\rvert}
@@ -196,8 +196,9 @@
   {#2}\sb{#3}
 }
 
+\RequirePackage{amsthm}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{rem}{Remark}[section]
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
-\newtheorem*{cor}{Corollary}
+\newtheorem{cor}{Corollary}
